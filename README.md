@@ -52,3 +52,9 @@ export default tseslint.config({
   },
 })
 ```
+
+## Deployment To GitHub Pages
+
+```shell
+npm run deploy -- -m "COMMIT MESSAGE"
+```
