@@ -5,6 +5,7 @@ import '@fontsource/roboto/700.css'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import {amber, blueGrey} from '@mui/material/colors'
 import CssBaseline from '@mui/material/CssBaseline'
+import ErrorsStateProvider from './components/errors/ErrorsStateProvider.tsx'
 import PostsList from './components/PostsList.tsx'
 import Scaffold from './components/Scaffold.tsx'
 
@@ -20,9 +21,11 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
-      <Scaffold>
-        <PostsList />
-      </Scaffold>
+      <ErrorsStateProvider>
+        <Scaffold>
+          <PostsList />
+        </Scaffold>
+      </ErrorsStateProvider>
     </ThemeProvider>
   )
 }

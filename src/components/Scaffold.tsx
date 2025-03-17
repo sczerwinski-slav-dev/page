@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
+import ErrorAlert from './errors/ErrorAlert.tsx'
 import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -12,10 +13,12 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
 import PageStub from '../types/PageStub.tsx'
+import Stack from '@mui/material/Stack'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import {getPages} from '../api/get-pages.tsx'
 import {pageTitle} from '../config/site.tsx'
+import {useErrors} from '../hooks/use-errors.tsx'
 
 const drawerWidth = 180
 
@@ -98,8 +101,29 @@ function ScaffoldDrawer(props: ScaffoldDrawerProps) {
   )
 }
 
+interface ScaffoldErrorsListProps {
+  errors: string[]
+}
+
+function ScaffoldErrorsList(props: ScaffoldErrorsListProps) {
+  const {errors} = props
+
+  if (!errors.length) {
+    return (<React.Fragment />)
+  }
+
+  return (
+    <Stack spacing={1} sx={{my: 1}}>
+      {errors.map((error) => (
+        <ErrorAlert message={error} />
+      ))}
+    </Stack>
+  )
+}
+
 function Scaffold(props: React.PropsWithChildren) {
   const [pages, setPages] = React.useState<PageStub[]>([]),
+    [errors, dispatchError] = useErrors(),
     [drawerOpen, setDrawerOpen] = React.useState(false)
 
   function handleDrawerToggle() {
@@ -109,8 +133,12 @@ function Scaffold(props: React.PropsWithChildren) {
   React.useEffect(() => {
     getPages()
       .then(setPages)
-      .catch((reason: unknown) => { console.error(reason) })
-  }, [])
+      .catch((reason: unknown) => {
+        if (reason instanceof Error) {
+          dispatchError(reason.message)
+        }
+      })
+  }, [dispatchError])
 
   return (
     <Box sx={{display: 'flex'}}>
@@ -123,8 +151,9 @@ function Scaffold(props: React.PropsWithChildren) {
         <ScaffoldDrawer open={drawerOpen} onClick={handleDrawerToggle} pages={pages} />
       </nav>
       <Container maxWidth="lg">
-        <Box component="main" sx={{padding: 3}}>
+        <Box component="main" sx={{my: 3}}>
           <Toolbar />
+          <ScaffoldErrorsList errors={errors} />
           {props.children}
         </Box>
       </Container>

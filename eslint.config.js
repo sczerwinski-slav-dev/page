@@ -34,7 +34,6 @@ export default tsEslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'semi': ['error', 'never'],
       'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-      'no-console': ['error', { allow: ['warn', 'error'] }],
     },
   },
 )
