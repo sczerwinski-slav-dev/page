@@ -1,13 +1,13 @@
 import * as React from 'react'
+import ErrorsDispatchContext from './errors/ErrorsDispatchContext.tsx'
 import Grid from '@mui/material/Grid2'
 import PostCard from './PostCard.tsx'
 import PostStub from '../types/PostStub.tsx'
 import {getPosts} from '../api/get-posts.tsx'
-import {useErrors} from '../hooks/use-errors.tsx'
 
 function PostsList() {
   const [posts, setPosts] = React.useState<PostStub[]>([]),
-    [, dispatchError] = useErrors()
+    dispatchError = React.useContext(ErrorsDispatchContext)
 
   React.useEffect(() => {
     getPosts()
