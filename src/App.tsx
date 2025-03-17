@@ -2,7 +2,7 @@ import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
-import {BrowserRouter, Route, Routes} from 'react-router'
+import {HashRouter, Route, Routes} from 'react-router'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import {amber, blueGrey} from '@mui/material/colors'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -25,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
-      <BrowserRouter>
+      <HashRouter>
         <ErrorsStateProvider>
           <Scaffold>
             <Routes>
@@ -38,7 +38,7 @@ function App() {
             </Routes>
           </Scaffold>
         </ErrorsStateProvider>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   )
 }
