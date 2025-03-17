@@ -12,6 +12,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
+import {NavLink} from 'react-router'
 import PageStub from '../types/PageStub.tsx'
 import Stack from '@mui/material/Stack'
 import Toolbar from '@mui/material/Toolbar'
@@ -39,12 +40,17 @@ function ScaffoldToolbar(props: ScaffoldToolbarProps) {
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+      <Typography
+        component={NavLink}
+        to="/"
+        variant="h6"
+        sx={{color: 'inherit', flexGrow: 1, textDecoration: 'none'}}
+      >
         {pageTitle}
       </Typography>
       <Box sx={{display: {sm: 'block', xs: 'none'}}}>
         {props.pages.map((pageStub) => (
-          <Button key={pageStub.id} sx={{color: '#fff'}}>
+          <Button component={NavLink} to={`/${pageStub.id}`} key={pageStub.id} sx={{color: '#fff'}}>
             {pageStub.title}
           </Button>
         ))}
@@ -68,8 +74,8 @@ function ScaffoldDrawerContents(props: ScaffoldDrawerContentsProps) {
       <List>
         {props.pages.map((pageStub) => (
           <ListItem key={pageStub.id} disablePadding>
-            <ListItemButton sx={{textAlign: 'center'}}>
-              <ListItemText primary={pageStub.title} />
+            <ListItemButton component={NavLink} to={`/${pageStub.id}`} sx={{textAlign: 'center'}}>
+              <ListItemText primary={pageStub.title}/>
             </ListItemButton>
           </ListItem>
         ))}

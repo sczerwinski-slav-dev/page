@@ -1,1 +1,3 @@
-export const pageTitle = "Slav.Dev"
+export const
+  pageTitle = "Slav.Dev",
+  postsPath = "posts"

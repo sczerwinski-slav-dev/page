@@ -1,1 +1,4 @@
-export const baseUrl = 'https://slav.dev/api'
+export const
+  baseUrl = 'https://slav.dev/api',
+  pagesPath = '/pages',
+  postsPath = '/posts'
