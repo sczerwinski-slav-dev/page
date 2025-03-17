@@ -1,22 +1,22 @@
 import * as React from 'react'
-
-import PostStub from '../types/PostStub.tsx'
-import {getPosts} from '../api/get-posts.tsx'
-
 import Grid from '@mui/material/Grid2'
 import PostCard from './PostCard.tsx'
+import PostStub from '../types/PostStub.tsx'
+import {getPosts} from '../api/get-posts.tsx'
 
 function PostsList() {
   const [posts, setPosts] = React.useState<PostStub[]>([])
 
   React.useEffect(() => {
-    getPosts().then(setPosts)
+    getPosts()
+      .then(setPosts)
+      .catch((reason: unknown) => { console.error(reason) })
   }, [])
 
   return (
     <Grid container spacing={2}>
       {posts.map((post) => (
-        <Grid key={post.id} size={{ xs: 12, sm: 6, md: 4 }}>
+        <Grid key={post.id} size={{ md: 4, sm: 6, xs: 12 }}>
           <PostCard post={post} />
         </Grid>
       ))}

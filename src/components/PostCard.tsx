@@ -1,21 +1,19 @@
-import PostStub from '../types/PostStub.tsx'
-import {formatDate} from '../utils/date.tsx'
-
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
+import PostStub from '../types/PostStub.tsx'
+import ReactMarkdown from 'react-markdown'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-
-import ReactMarkdown from 'react-markdown'
+import {formatDate} from '../utils/date.tsx'
 
 interface PostCardProps {
   post: PostStub
 }
 
 function PostCard(props: PostCardProps) {
-  const post = props.post
+  const {post} = props
 
   return (
     <Card>

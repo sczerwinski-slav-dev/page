@@ -1,14 +1,12 @@
-import CssBaseline from '@mui/material/CssBaseline'
-import PostsList from './components/PostsList.tsx'
-import Scaffold from './components/Scaffold.tsx'
-
-import {createTheme, ThemeProvider} from '@mui/material/styles'
-import {amber, blueGrey} from '@mui/material/colors'
-
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
+import {ThemeProvider, createTheme} from '@mui/material/styles'
+import {amber, blueGrey} from '@mui/material/colors'
+import CssBaseline from '@mui/material/CssBaseline'
+import PostsList from './components/PostsList.tsx'
+import Scaffold from './components/Scaffold.tsx'
 
 const appTheme = createTheme({
   palette: {

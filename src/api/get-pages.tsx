@@ -1,5 +1,5 @@
-import {baseUrl} from '../config/api.tsx'
 import PageStub from '../types/PageStub.tsx'
+import {baseUrl} from '../config/api.tsx'
 import {fetchJson} from '../utils/fetch.tsx'
 
 const pagesPath = '/pages'
