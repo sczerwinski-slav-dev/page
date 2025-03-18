@@ -1,10 +1,11 @@
+import '@fontsource/jetbrains-mono/400.css'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import {HashRouter, Route, Routes} from 'react-router'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
-import {amber, blueGrey} from '@mui/material/colors'
+import {blueGrey, orange} from '@mui/material/colors'
 import CssBaseline from '@mui/material/CssBaseline'
 import ErrorsStateProvider from './components/errors/ErrorsStateProvider.tsx'
 import PageContent from './components/PageContent.tsx'
@@ -17,7 +18,9 @@ const appTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: blueGrey,
-    secondary: amber,
+    secondary: {
+      main: orange['200']
+    },
   },
 })
 

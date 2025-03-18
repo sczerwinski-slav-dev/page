@@ -1,7 +1,7 @@
 import * as React from 'react'
 import ErrorsDispatchContext from './errors/ErrorsDispatchContext.tsx'
+import MaterialMarkdown from './markdown/MaterialMarkdown.tsx'
 import Post from '../types/Post.tsx'
-import ReactMarkdown from 'react-markdown'
 import Typography from '@mui/material/Typography'
 import {formatDate} from '../utils/date.tsx'
 import {getPost} from '../api/get-post.tsx'
@@ -34,7 +34,7 @@ function PostContent() {
       <Typography sx={{ color: 'text.secondary', mb: 4 }}>
         {formatDate(post.date)}
       </Typography>
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+      <MaterialMarkdown markdown={post.content} />
     </React.Fragment>
   )
 }
