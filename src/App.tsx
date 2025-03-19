@@ -6,12 +6,11 @@ import '@fontsource/roboto/700.css'
 import {HashRouter, Route, Routes} from 'react-router'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import {blueGrey, orange} from '@mui/material/colors'
+import AppScaffold from './components/app/AppScaffold.tsx'
 import CssBaseline from '@mui/material/CssBaseline'
-import ErrorsStateProvider from './components/errors/ErrorsStateProvider.tsx'
-import PageContent from './components/PageContent.tsx'
-import PostContent from './components/PostContent.tsx'
-import PostsList from './components/PostsList.tsx'
-import Scaffold from './components/Scaffold.tsx'
+import PageContent from './components/pages/PageContent.tsx'
+import PostContent from './components/posts/PostContent.tsx'
+import PostsList from './components/posts/PostsList.tsx'
 import {postsPath} from './config/site.tsx'
 
 const appTheme = createTheme({
@@ -29,18 +28,16 @@ function App() {
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
       <HashRouter>
-        <ErrorsStateProvider>
-          <Scaffold>
-            <Routes>
+        <AppScaffold>
+          <Routes>
+            <Route index element={<PostsList />} />
+            <Route path={postsPath}>
               <Route index element={<PostsList />} />
-              <Route path={postsPath}>
-                <Route index element={<PostsList />} />
-                <Route path=":postId" element={<PostContent />} />
-              </Route>
-              <Route path=":pageId" element={<PageContent />} />
-            </Routes>
-          </Scaffold>
-        </ErrorsStateProvider>
+              <Route path=":postId" element={<PostContent />} />
+            </Route>
+            <Route path=":pageId" element={<PageContent />} />
+          </Routes>
+        </AppScaffold>
       </HashRouter>
     </ThemeProvider>
   )

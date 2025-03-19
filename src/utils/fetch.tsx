@@ -3,6 +3,6 @@ export async function fetchJson<T>(url: string): Promise<T> {
     if (response.ok) {
       return response.json()
     }
-    throw new Error(`Request ${response.url} failed with error code ${response.status.toString()}`)
+    throw new Error(`Request to ${response.url} returned ${response.status.toString()}`)
   }) as Promise<T>
 }

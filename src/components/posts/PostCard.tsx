@@ -3,12 +3,12 @@ import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
 import {NavLink} from 'react-router'
-import PostStub from '../types/PostStub.tsx'
+import PostStub from '../../types/PostStub.tsx'
 import ReactMarkdown from 'react-markdown'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import {formatDate} from '../utils/date.tsx'
-import {postsPath} from '../config/site.tsx'
+import {formatDate} from '../../utils/date.tsx'
+import {postsPath} from '../../config/site.tsx'
 
 interface PostCardProps {
   post: PostStub
