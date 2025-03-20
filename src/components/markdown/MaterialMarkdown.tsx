@@ -2,10 +2,15 @@ import * as React from 'react'
 import {Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material'
 import ReactMarkdown, {Components} from 'react-markdown'
 import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Divider from '@mui/material/Divider'
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote'
 import HighlightedCode from '../code/HighlightedCode.tsx'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
@@ -83,6 +88,20 @@ function link(attrs: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   )
 }
 
+function blockQuote(attrs: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) {
+  return (
+    <Card>
+      <CardContent>
+        <Stack direction='row' spacing={1.5}>
+          <FormatQuoteIcon color='primary' />
+          <Divider orientation='vertical' variant='fullWidth' flexItem />
+          <Box>{attrs.children}</Box>
+        </Stack>
+      </CardContent>
+    </Card>
+  )
+}
+
 function table(attrs: React.TableHTMLAttributes<HTMLTableElement>) {
   return (
     <Paper sx={{overflow: 'hidden', width: '100%'}}>
@@ -135,6 +154,7 @@ const markdownComponents: Components = {
   /* eslint-disable id-length */
   a: link,
   b: bold,
+  blockquote: blockQuote,
   code,
   em: italic,
   h1: header1,
