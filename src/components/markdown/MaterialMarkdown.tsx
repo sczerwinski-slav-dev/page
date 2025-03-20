@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import HighlightedCode from '../code/HighlightedCode.tsx'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import Typography from '@mui/material/Typography'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
@@ -75,7 +76,11 @@ function code(attrs: React.HTMLAttributes<HTMLElement>) {
 }
 
 function link(attrs: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-  return (<Link href={attrs.href} title={attrs.title}>{attrs.children}</Link>)
+  return (
+    <Link href={attrs.href} title={attrs.title} target='_blank' rel='noopener'>
+      {attrs.children}<OpenInNewIcon fontSize='inherit' />
+    </Link>
+  )
 }
 
 function table(attrs: React.TableHTMLAttributes<HTMLTableElement>) {
