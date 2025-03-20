@@ -10,14 +10,14 @@ function PostCardSkeleton() {
     <Card>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div"><Skeleton width='50%' /></Typography>
-          <Typography sx={{ mb: 1.5 }}><Skeleton width='30%' /></Typography>
+          <Typography gutterBottom variant="h5" component="div"><Skeleton animation='wave' width='50%' /></Typography>
+          <Typography sx={{ mb: 1.5 }}><Skeleton animation='wave' width='30%' /></Typography>
           <Stack direction="row" spacing={1} sx={{ my: 1 }}>
-            <Skeleton width='10%' />
-            <Skeleton width='10%' />
+            <Skeleton animation='wave' width='10%' />
+            <Skeleton animation='wave' width='10%' />
           </Stack>
-          <Typography variant='body1'><Skeleton width='50%' /></Typography>
-          <Typography variant='body1'><Skeleton width='30%' /></Typography>
+          <Typography variant='body1'><Skeleton animation='wave' width='50%' /></Typography>
+          <Typography variant='body1'><Skeleton animation='wave' width='30%' /></Typography>
         </CardContent>
       </CardActionArea>
     </Card>
