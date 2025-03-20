@@ -1,11 +1,10 @@
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
-import Chip from '@mui/material/Chip'
 import {NavLink} from 'react-router'
+import PostChips from './PostChips.tsx'
 import PostStub from '../../types/PostStub.tsx'
 import ReactMarkdown from 'react-markdown'
-import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import {formatDate} from '../../utils/date.tsx'
 import {postsPath} from '../../config/site.tsx'
@@ -27,14 +26,7 @@ function PostCard(props: PostCardProps) {
           <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
             {formatDate(post.date)}
           </Typography>
-          <Stack direction="row" spacing={1} sx={{ my: 1 }}>
-            {post.categories.map(category => (
-              <Chip key={category} label={category} color="primary" size="small" />
-            ))}
-            {post.tags.map(tag => (
-              <Chip key={tag} label={tag} size="small" />
-            ))}
-          </Stack>
+          <PostChips post={post} />
           <ReactMarkdown>{post.abstract}</ReactMarkdown>
         </CardContent>
       </CardActionArea>
