@@ -6,7 +6,9 @@ import HighlightedCode from '../code/HighlightedCode.tsx'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import Typography from '@mui/material/Typography'
+import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 
 function header1(attrs: React.HTMLAttributes<HTMLHeadingElement>) {
   return (<Typography variant="h1" sx={{mb: 1, mt: 3}}>{attrs.children}</Typography>)
@@ -158,7 +160,11 @@ interface MaterialMarkdownProps {
 
 function MaterialMarkdown(props: MaterialMarkdownProps) {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm, remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+      components={markdownComponents}
+    >
       {props.markdown}
     </ReactMarkdown>
   )
