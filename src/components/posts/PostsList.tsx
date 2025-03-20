@@ -1,23 +1,20 @@
-import * as React from 'react'
-import ErrorAlert from '../feedback/ErrorAlert.tsx'
 import Grid from '@mui/material/Grid2'
 import PostCard from './PostCard.tsx'
 import PostStub from '../../types/PostStub.tsx'
 import PostsListSkeleton from './PostsListSkeleton.tsx'
-import Stack from '@mui/material/Stack'
-import {getPosts} from '../../api/get-posts.tsx'
 
-interface PostsListInnerProps {
+interface PostsListProps {
   posts: PostStub[]
   loading: boolean
 }
 
-function PostsListInner(props: PostsListInnerProps) {
+function PostsList(props: PostsListProps) {
   const {posts, loading} = props
 
   if (loading) {
     return (<PostsListSkeleton />)
   }
+
   return (
     <Grid container spacing={2}>
       {posts.map((post) => (
@@ -26,30 +23,6 @@ function PostsListInner(props: PostsListInnerProps) {
         </Grid>
       ))}
     </Grid>
-  )
-}
-
-function PostsList() {
-  const [posts, setPosts] = React.useState<PostStub[]>([]),
-    [error, setError] = React.useState<string | null>(null)
-
-  React.useEffect(() => {
-    setError(null)
-    setPosts([])
-    getPosts()
-      .then(setPosts)
-      .catch((reason: unknown) => {
-        if (reason instanceof Error) {
-          setError(reason.message)
-        }
-      })
-  }, [])
-
-  return (
-    <Stack direction='column' spacing={2}>
-      <ErrorAlert message={error} />
-      <PostsListInner posts={posts} loading={!error && !posts.length} />
-    </Stack>
   )
 }
 

@@ -11,7 +11,7 @@ import AppScaffold from './components/app/AppScaffold.tsx'
 import CssBaseline from '@mui/material/CssBaseline'
 import PageContent from './components/pages/PageContent.tsx'
 import PostContent from './components/posts/PostContent.tsx'
-import PostsList from './components/posts/PostsList.tsx'
+import PostsListWithFilter from './components/posts/PostsListWithFilter.tsx'
 import {postsPath} from './config/site.tsx'
 
 const appTheme = createTheme({
@@ -31,9 +31,9 @@ function App() {
       <HashRouter>
         <AppScaffold>
           <Routes>
-            <Route index element={<PostsList />} />
+            <Route index element={<PostsListWithFilter />} />
             <Route path={postsPath}>
-              <Route index element={<PostsList />} />
+              <Route index element={<PostsListWithFilter />} />
               <Route path=":postId" element={<PostContent />} />
             </Route>
             <Route path=":pageId" element={<PageContent />} />
