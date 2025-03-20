@@ -10,6 +10,10 @@ import SuccessSnackbar from '../feedback/SuccessSnackbar.tsx'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {darcula} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
+const languageOverrides = new Map<string, string>([
+  ["gradle", "groovy"],
+])
+
 interface HighlightedCodeProps {
   language: string
 }
@@ -42,7 +46,7 @@ function HighlightedCode(props: React.PropsWithChildren<HighlightedCodeProps>) {
           style={darcula}
           customStyle={{background: 'none'}}
           codeTagProps={{style: {fontFamily: 'JetBrains Mono', letterSpacing: 'normal'}}}
-          language={language}
+          language={languageOverrides.get(language) ?? language}
         >
           {children}
         </SyntaxHighlighter>
