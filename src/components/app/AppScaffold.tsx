@@ -8,16 +8,13 @@ import ErrorSnackbar from '../feedback/ErrorSnackbar.tsx'
 import PageStub from '../../types/PageStub.tsx'
 import Toolbar from '@mui/material/Toolbar'
 import {getPages} from '../../api/get-pages.tsx'
+import useToggleable from '../../hooks/toggleable.tsx'
 
 function AppScaffold(props: React.PropsWithChildren) {
   const [pages, setPages] = React.useState<PageStub[]>([]),
-    [drawerOpen, setDrawerOpen] = React.useState(false),
+    [drawerOpen, toggleDrawerOpen] = useToggleable(false),
     [error, setError] = React.useState<string | null>(null),
     [errorSnackbarOpen, setErrorSnackbarOpen] = React.useState(false)
-
-  function handleDrawerToggle() {
-    setDrawerOpen((oldState) => !oldState)
-  }
 
   React.useEffect(() => {
     getPages()
@@ -34,11 +31,11 @@ function AppScaffold(props: React.PropsWithChildren) {
     <Box sx={{display: 'flex'}}>
       <AppBar component="nav">
         <Container maxWidth="lg">
-          <AppToolbar onMenuClick={handleDrawerToggle} pages={pages} />
+          <AppToolbar onMenuClick={toggleDrawerOpen} pages={pages} />
         </Container>
       </AppBar>
       <nav>
-        <AppDrawer open={drawerOpen} onClick={handleDrawerToggle} pages={pages} />
+        <AppDrawer open={drawerOpen} onClick={toggleDrawerOpen} pages={pages} />
       </nav>
       <Container maxWidth="lg">
         <Box component="main" sx={{my: 3}}>
