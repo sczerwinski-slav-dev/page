@@ -8,7 +8,7 @@ interface PostChipsProps {
 
 function PostChips(props: PostChipsProps) {
   return (
-    <Stack direction="row" spacing={1} sx={{ my: 1 }}>
+    <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', my: 1 }}>
       {props.post.categories.map(category => (
         <Chip key={category} label={category} color='primary' size='small' />
       ))}

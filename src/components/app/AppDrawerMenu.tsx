@@ -4,6 +4,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
+import ModeListItemButton from '../buttons/ModeListItemButton.tsx'
 import {NavLink} from 'react-router'
 import PageStub from '../../types/PageStub.tsx'
 import Typography from '@mui/material/Typography'
@@ -29,6 +30,9 @@ function AppDrawerMenu(props: AppDrawerMenuProps) {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem key='switch-mode' disablePadding>
+          <ModeListItemButton sx={{textAlign: 'center'}} />
+        </ListItem>
       </List>
     </Box>
   )

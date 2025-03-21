@@ -1,32 +1,24 @@
 import '@fontsource/jetbrains-mono/400.css'
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
+import '@fontsource/open-sans/300.css'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/open-sans/500.css'
+import '@fontsource/open-sans/600.css'
 import './App.css'
 import {HashRouter, Route, Routes} from 'react-router'
-import {ThemeProvider, createTheme} from '@mui/material/styles'
-import {blueGrey, orange} from '@mui/material/colors'
 import AppScaffold from './components/app/AppScaffold.tsx'
 import CssBaseline from '@mui/material/CssBaseline'
 import PageContent from './components/pages/PageContent.tsx'
 import PostContent from './components/posts/PostContent.tsx'
 import PostsListWithFilter from './components/posts/PostsListWithFilter.tsx'
+import ThemeProvider from '@mui/material/styles/ThemeProvider'
+import {createAppTheme} from './theme.tsx'
 import {postsPath} from './config/site.tsx'
 
-const appTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: blueGrey,
-    secondary: {
-      main: orange['200']
-    },
-  },
-})
+const appTheme = createAppTheme()
 
 function App() {
   return (
-    <ThemeProvider theme={appTheme}>
+    <ThemeProvider theme={appTheme} defaultMode='dark'>
       <CssBaseline />
       <HashRouter>
         <AppScaffold>

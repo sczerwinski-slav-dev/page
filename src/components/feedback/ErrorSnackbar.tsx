@@ -16,7 +16,7 @@ function ErrorSnackbar(props: ErrorSnackbarProps) {
     >
       <Alert
         severity='error'
-        variant='outlined'
+        variant='filled'
         sx={{ width: '100%' }}
         onClose={props.onClose}
       >

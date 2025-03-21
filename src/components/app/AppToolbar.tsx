@@ -2,6 +2,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
+import ModeIconButton from '../buttons/ModeIconButton.tsx'
 import {NavLink} from 'react-router'
 import PageStub from '../../types/PageStub.tsx'
 import Toolbar from '@mui/material/Toolbar'
@@ -18,7 +19,7 @@ function AppToolbar(props: AppToolbarProps) {
     <Toolbar>
       <IconButton
         color="inherit"
-        aria-label="open drawer"
+        aria-label="Open drawer"
         edge="start"
         onClick={props.onMenuClick}
         sx={{display: {sm: 'none'}, mr: 2}}
@@ -39,6 +40,11 @@ function AppToolbar(props: AppToolbarProps) {
             {pageStub.title}
           </Button>
         ))}
+        <ModeIconButton
+          color="inherit"
+          aria-label="Swith mode"
+          edge="end"
+          sx={{ml: 2}} />
       </Box>
     </Toolbar>
   )

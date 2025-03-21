@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import SuccessSnackbar from '../feedback/SuccessSnackbar.tsx'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {darcula} from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import useSyntaxHighlightStyle from '../../hooks/syntax-highlight-scheme.tsx'
 
 const languageOverrides = new Map<string, string>([
   ["gradle", "groovy"],
@@ -22,7 +22,8 @@ function HighlightedCode(props: React.PropsWithChildren<HighlightedCodeProps>) {
   const children = props.children as string[],
     {language} = props,
     [copySuccessSnackbarOpen, setCopySuccessSnackbarOpen] = React.useState(false),
-    [copyErrorSnackbarOpen, setCopyErrorSnackbarOpen] = React.useState(false)
+    [copyErrorSnackbarOpen, setCopyErrorSnackbarOpen] = React.useState(false),
+    style = useSyntaxHighlightStyle()
 
   function onCopyClick() {
     navigator.clipboard.writeText(children.toString())
@@ -43,7 +44,7 @@ function HighlightedCode(props: React.PropsWithChildren<HighlightedCodeProps>) {
         </Stack>
         <Divider />
         <SyntaxHighlighter
-          style={darcula}
+          style={style}
           customStyle={{background: 'none'}}
           codeTagProps={{style: {fontFamily: 'JetBrains Mono', letterSpacing: 'normal'}}}
           language={languageOverrides.get(language) ?? language}

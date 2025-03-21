@@ -66,7 +66,13 @@ function highlightedCode(language: string, attrs: React.HTMLAttributes<HTMLEleme
 
 function inlineCode(attrs: React.HTMLAttributes<HTMLElement>) {
   return (
-    <Typography variant='inherit' color='secondary' display='inline' sx={{fontFamily: 'JetBrains Mono'}}>
+    <Typography
+      component='span'
+      variant='inherit'
+      color='secondary'
+      display='inline'
+      sx={{fontFamily: 'JetBrains Mono', letterSpacing: 'normal'}}
+    >
       {attrs.children}
     </Typography>
   )
