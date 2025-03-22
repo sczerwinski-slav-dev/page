@@ -6,6 +6,7 @@ interface PostStub {
   draft: boolean
   categories: string[]
   tags: string[]
+  thumbnail: string | null
   url: string
 }
 
